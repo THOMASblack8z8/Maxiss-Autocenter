@@ -1,0 +1,166 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #000;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1,
+header .logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f0c330; /* dourado */
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+header nav a {
+    color: #f0c330;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #fff;
+}
+
+/* Container do carrinho */
+.carrinho-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: #1e1e1e;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    border: 2px solid #f0c330;
+}
+
+.carrinho-container h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #f0c330;
+    margin-bottom: 25px;
+}
+
+/* Lista de itens */
+#lista-carrinho {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+#lista-carrinho li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #333;
+    font-size: 16px;
+}
+
+#lista-carrinho li:last-child {
+    border-bottom: none;
+}
+
+#lista-carrinho li span {
+    flex: 1;
+    color: #fff;
+}
+
+#lista-carrinho li button {
+    background: #c0392b;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+}
+
+#lista-carrinho li button:hover {
+    background: #e74c3c;
+}
+
+/* Total */
+#total-carrinho {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: right;
+    margin: 20px 0;
+    color: #f0c330;
+}
+
+/* Botões de pagamento */
+.pagamento-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.pagamento-buttons button {
+    background: linear-gradient(45deg, #f0c330, #ffd65c);
+    color: #111;
+    border: none;
+    padding: 12px 22px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.4);
+}
+
+.pagamento-buttons button:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Rodapé */
+footer {
+    background-color: #000;
+    color: #f0c330;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    #lista-carrinho li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    #total-carrinho {
+        text-align: center;
+    }
+
+    .pagamento-buttons {
+        flex-direction: column;
+    }
+}

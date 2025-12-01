@@ -1,0 +1,292 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  color: #111;
+  line-height: 1.6;
+}
+
+header {
+    background-color: rgb(0, 0, 0); 
+    padding: 15px 0;
+}
+
+.container-header {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+nav a {
+    background: none;         /* Remove o fundo */
+    color: #ffffff;
+    padding: 0 10px;          /* Apenas espaçamento lateral */
+    border-radius: 0;         /* Remove borda arredondada */
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: bold;
+    font-size: 1rem;
+}
+nav a:hover {
+    color: #b8860b;           /* Dourado escuro ao passar o mouse */
+    background: none; 
+}
+
+
+/* ===== HERO - Imagem e texto lado a lado ===== */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #111, #333);
+  color: #fff;
+  padding: 2rem;
+  gap: 2rem; /* espaço entre imagem e texto */
+}
+
+.carousel {
+  flex: 1 1 500px; /* metade da largura no desktop */
+  max-width: 600px;
+  height: 350px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+}
+
+.carousel-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-image.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.hero-text {
+  flex: 1 1 400px;
+  max-width: 600px;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  background: #ffc107;
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* ===== PRODUTOS - NÃO ALTERADO ===== */
+.produtos {
+  padding: 2rem;
+  text-align: center;
+}
+
+.produtos h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.produtos-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.produto {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 200px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.produto img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.produto h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.produto p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.produto button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/* HERO - Estilo inspirado no banner da Berzerk */
+.hero {
+  background: #f6f6f6;
+  padding: 120px 40px 80px;
+  margin-top: 80px; /* por causa do header fixo */
+}
+
+.hero-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 550px;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-copy .subheadline {
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.hero-copy h1 {
+  font-size: 5rem;
+  line-height: 0.95;
+  font-weight: 800;
+  color: #222;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-copy .highlight {
+  color: #FFD700;
+}
+
+.hero-copy .lead {
+  color: #555;
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin-bottom: 25px;
+}
+
+.price-box {
+  margin-bottom: 25px;
+}
+
+.price-box .price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.price-box .price span {
+  color: #FFD700;
+  font-size: 1.8rem;
+}
+
+.brands {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.brands img {
+  height: 28px;
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.brands img:hover {
+  filter: grayscale(0%);
+}
+
+.btn-primary {
+  display: inline-block;
+  background: #FFD700;
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #e6c200;
+}
+
+.hero-image {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsivo */
+@media (max-width: 950px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-copy h1 {
+    font-size: 3rem;
+  }
+
+  .hero-image {
+    margin-top: 30px;
+  }
+
+  .brands {
+    justify-content: center;
+  }
+}
+
+
+/* ===== FOOTER ===== */
+footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}

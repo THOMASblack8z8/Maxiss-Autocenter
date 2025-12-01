@@ -1,0 +1,287 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+header {
+    background-color: rgba(0, 0, 0, 0.85); /* Dourado com transparência */
+    padding: 15px 0;
+}
+
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color :gold
+}
+
+nav a {
+    background: none;         
+    color: #ffffff;
+    padding: 0 10px;         
+    border-radius: 0;         
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    color: #b8860b;           
+    background: none;    
+}
+
+
+/* Categorias */
+.categorias {
+  display: flex;
+  list-style: none;
+  background-color: #333;
+  padding: 10px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.categorias li {
+  margin: 5px 15px;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.categorias li:hover,
+.categorias li.active {
+  background-color: #ffcc00;
+  color: #333;
+}
+
+/* Produtos */
+.produtos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.produto {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+  text-align: center; 
+  transition: transform 0.3s;
+ 
+}
+
+.produto:hover {
+  transform: translateY(-5px);
+}
+
+.produto img {
+  max-width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.produto h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.produto p {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.produto button {
+  background-color: #ffcc00;
+  color: #222;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.produto button:hover {
+  background-color: #e6b800;
+}
+
+/* Carrinho */
+.carrinho-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+}
+
+.carrinho-container h2 {
+  margin: 15px 0;
+}
+
+#lista-carrinho {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+#lista-carrinho li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#lista-carrinho li button {
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#lista-carrinho li button:hover {
+  background-color: #e60000;
+}
+
+.carrinho-container p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.carrinho-container button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.carrinho-container button:hover {
+  background-color: #218838;
+}
+
+/* Pagamento */
+.pagamento-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.pagamento-buttons button {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px 0;
+  background-color: #ffcc00;
+  color: #222;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.pagamento-buttons button:hover {
+  background-color: #e6b800;
+}
+
+/* Formulário de pagamento */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.1);
+}
+
+form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  margin-top: 20px;
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+form button:hover {
+  background-color: #218838;
+}
+
+/* Footer */
+footer {
+    background-color: #111;
+    color: #ffd700;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .produtos-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  header nav a {
+    margin-left: 10px;
+  }
+
+  .categorias {
+    flex-direction: column;
+    align-items: center;
+  }
+}

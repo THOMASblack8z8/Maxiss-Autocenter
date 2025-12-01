@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Pagamento com Cartão - Maxiss AutoCenter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container-header">
+            <div class="logo">
+                <h1><a href="./homepage.html">Maxiss AutoCenter</a></h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="./homepage.html">Início</a></li>
+                    <li><a href="./Produtos.html">Produtos</a></li>
+                    <li><a href="./Sobre.html">Sobre</a></li>
+                    <li><a href="./Contato.html">Contato</a></li>
+                    <li><a href="./login.html" class="btn-login">Login</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="pagamento-wrapper">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="./Finalizar.html">← Voltar ao Carrinho</a>
+            </div>
+
+            <div class="pagamento-header">
+                <h1>Pagamento com Cartão de Crédito</h1>
+                <p>Finalize sua compra de forma segura</p>
+            </div>
+
+            <div class="pagamento-content">
+                <!-- Resumo do Pedido -->
+                <div class="resumo-box">
+                    <h2>Resumo do Pedido</h2>
+                    
+                    <div class="produtos-resumo">
+                        <h3>Produtos</h3>
+                        <ul id="lista-carrinho" class="lista-resumo">
+                            <li class="vazio">Carrinho vazio</li>
+                        </ul>
+                    </div>
+
+                    <div class="valores-resumo">
+                        <div class="valor-linha">
+                            <span>Subtotal:</span>
+                            <span id="total-produtos">R$ 0,00</span>
+                        </div>
+                        <div class="valor-linha">
+                            <span>Frete:</span>
+                            <span id="frete-carrinho">R$ 0,00</span>
+                        </div>
+                        <div class="valor-linha total">
+                            <span>Total:</span>
+                            <span id="total-geral">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <div class="seguranca-box">
+                        <div class="seguranca-item">
+                            <span class="icon">🔒</span>
+                            <span>Pagamento Seguro</span>
+                        </div>
+                        <div class="seguranca-item">
+                            <span class="icon">✓</span>
+                            <span>Dados Criptografados</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulário de Pagamento -->
+                <div class="form-box">
+                    <div class="form-header">
+                        <h2>Dados do Cartão</h2>
+                        <div class="cartao-bandeiras">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" />
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" />
+                        </div>
+                    </div>
+
+                    <form id="form-cartao">
+                        <div class="cartao-visual" id="cartao-visual">
+                            <div class="cartao-chip"></div>
+                            <div class="cartao-numero" id="cartao-display">•••• •••• •••• ••••</div>
+                            <div class="cartao-info">
+                                <div class="cartao-nome" id="nome-display">NOME NO CARTÃO</div>
+                                <div class="cartao-validade">
+                                    <span>VALIDADE</span>
+                                    <span id="validade-display">••/••</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nome">Nome no Cartão *</label>
+                            <input type="text" id="nome" placeholder="Nome como está no cartão" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="numero">Número do Cartão *</label>
+                            <input type="text" id="numero" maxlength="19" placeholder="1234 5678 9012 3456" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="validade">Validade *</label>
+                                <input type="text" id="validade" maxlength="5" placeholder="MM/AA" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV *</label>
+                                <input type="text" id="cvv" maxlength="3" placeholder="123" required>
+                            </div>
+                        </div>
+
+                        <div class="form-divider">
+                            <span>Endereço de Entrega</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cep">CEP *</label>
+                            <input type="text" id="cep" maxlength="9" placeholder="00000-000" required>
+                            <small>Digite seu CEP para calcular o frete</small>
+                        </div>
+
+                        <div id="endereco-info" class="endereco-info" style="display: none;">
+                            <p id="endereco-texto"></p>
+                        </div>
+
+                        <button type="submit" class="btn-finalizar">
+                            Finalizar Pagamento
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Sucesso -->
+    <div id="modal-sucesso" class="modal">
+        <div class="modal-content success">
+            <div class="success-icon">✓</div>
+            <h2>Pagamento Realizado com Sucesso!</h2>
+            <p id="mensagem-sucesso">Seu pedido foi confirmado.</p>
+            <div class="success-details">
+                <p>Em breve você receberá um e-mail com os detalhes da compra.</p>
+                <p>Prazo de entrega: 5-7 dias úteis</p>
+            </div>
+            <button onclick="voltarInicio()" class="btn-voltar">Voltar ao Início</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Maxiss AutoCenter — Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .container-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo h1 a {
+            color: #FFD700;
+            font-size: 1.8rem;
+            text-decoration: none;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-menu ul li a:hover {
+            color: #FFD700;
+        }
+
+        .btn-login {
+            background-color: #FFD700;
+            color: #000 !important;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .btn-login:hover {
+            background-color: #e6c200;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #FFD700;
+            display: block;
+            border-radius: 2px;
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        main {
+            padding-top: 100px;
+            padding-bottom: 60px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .pagamento-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: #FFD700;
+        }
+
+        .pagamento-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .pagamento-header h1 {
+            font-size: 2.5rem;
+            color: #111;
+            margin-bottom: 10px;
+        }
+
+        .pagamento-header p {
+            font-size: 1.05rem;
+            color: #666;
+        }
+
+        .pagamento-content {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* ========== RESUMO BOX ========== */
+        .resumo-box {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+
+        .resumo-box h2 {
+            font-size: 1.5rem;
+            color: #111;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .produtos-resumo h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .lista-resumo {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .lista-resumo li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .lista-resumo li:last-child {
+            border-bottom: none;
+        }
+
+        .lista-resumo li.vazio {
+            text-align: center;
+            color: #999;
+            padding: 20px 0;
+        }
+
+        .valores-resumo {
+            margin: 20px 0;
+        }
+
+        .valor-linha {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .valor-linha.total {
+            border-top: 2px solid #f0f0f0;
+            margin-top: 10px;
+            padding-top: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .valor-linha.total span:last-child {
+            color: #FFD700;
+        }
+
+        .seguranca-box {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .seguranca-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .seguranca-item .icon {
+            color: #4CAF50;
+            font-size: 1.2rem;
+        }
+
+        /* ========== FORM BOX ========== */
+        .form-box {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .form-header h2 {
+            font-size: 1.5rem;
+            color: #111;
+        }
+
+        .cartao-bandeiras {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cartao-bandeiras img {
+            height: 30px;
+            object-fit: contain;
+        }
+
+        /* ========== CARTÃO VISUAL ========== */
+        .cartao-visual {
+            background: linear-gradient(135deg, #1e1e1e 0%, #3a3a3a 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            min-height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cartao-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+        }
+
+        .cartao-chip {
+            width: 50px;
+            height: 40px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .cartao-numero {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .cartao-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .cartao-nome {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cartao-validade {
+            text-align: right;
+        }
+
+        .cartao-validade span:first-child {
+            font-size: 0.7rem;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        /* ========== FORM ========== */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
+            background: #fafafa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #FFD700;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-divider {
+            margin: 30px 0 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .form-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .form-divider span {
+            background: #fff;
+            padding: 0 15px;
+            position: relative;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .endereco-info {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .endereco-info p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .btn-finalizar {
+            width: 100%;
+            background: #FFD700;
+            color: #000;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .btn-finalizar:hover {
+            background: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+        }
+
+        /* ========== MODAL ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: #fff;
+            margin: 8% auto;
+            padding: 50px 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            animation: slideDown 0.3s;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #4CAF50;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 25px;
+            animation: scaleIn 0.5s;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .modal-content h2 {
+            font-size: 1.8rem;
+            color: #111;
+            margin-bottom: 15px;
+        }
+
+        .modal-content > p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .success-details {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .success-details p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .success-details p:last-child {
+            margin-bottom: 0;
+        }
+
+        .btn-voltar {
+            background: #FFD700;
+            color: #000;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-voltar:hover {
+            background: #e6c200;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* ========== RESPONSIVO ========== */
+        @media (max-width: 992px) {
+            .pagamento-content {
+                grid-template-columns: 1fr;
+            }
+
+            .resumo-box {
+                position: relative;
+                top: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #000;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                flex-direction: column;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .pagamento-header h1 {
+                font-size: 2rem;
+            }
+
+            .form-box,
+            .resumo-box {
+                padding: 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .cartao-visual {
+                padding: 25px;
+            }
+
+            .cartao-numero {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 a {
+                font-size: 1.4rem;
+            }
+
+            .pagamento-header h1 {
+                font-size: 1.6rem;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+
+    <!-- JavaScript -->
+    <script>
+        // Carrinho simulado (em memória)
+        let carrinho = [
+            { nome: 'Óleo de Motor 5W30', preco: 59.90, quantidade: 1 },
+            { nome: 'Filtro de Óleo', preco: 35.00, quantidade: 2 }
+        ];
+
+        let totalProdutos = 0;
+        let frete = 0;
+
+        // Toggle menu mobile
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.nav-menu');
+
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        }
+
+        // Carregar carrinho
+        function carregarCarrinho() {
+            const lista = document.getElementById('lista-carrinho');
+            const totalProdutosEl = document.getElementById('total-produtos');
+            const freteEl = document.getElementById('frete-carrinho');
+            const totalGeralEl = document.getElementById('total-geral');
+
+            lista.innerHTML = '';
+            totalProdutos = 0;
+
+            if (carrinho.length === 0) {
+                lista.innerHTML = '<li class="vazio">Carrinho vazio</li>';
+            } else {
+                carrinho.forEach(item => {
+                    const quantidade = item.quantidade || 1;
+                    const totalItem = item.preco * quantidade;
+                    const li = document.createElement('li');
+                    li.textContent = `${item.nome} x${quantidade} - R$ ${totalItem.toFixed(2)}`;
+                    lista.appendChild(li);
+                    totalProdutos += totalItem;
+                });
+            }
+
+            totalProdutosEl.textContent = `R$ ${totalProdutos.toFixed(2)}`;
+            freteEl.textContent = `R$ ${frete.toFixed(2)}`;
+            totalGeralEl.textContent = `R$ ${(totalProdutos + frete).toFixed(2)}`;
+        }
+
+        // Máscara para número do cartão
+        document.getElementById('numero').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s/g, '');
+            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+            e.target.value = formattedValue;
+            document.getElementById('cartao-display').textContent = formattedValue || '•••• •••• •••• ••••';
+        });
+
+        // Máscara para validade
+        document.getElementById('validade').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+            document.getElementById('validade-display').textContent = value || '••/••';
+        });
+
+        // Atualizar nome no cartão
+        document.getElementById('nome').addEventListener('input', function(e) {
+            const nome = e.target.value.toUpperCase() || 'NOME NO CARTÃO';
+            document.getElementById('nome-display').textContent = nome;
+        });
+
+        // Máscara para CEP
+        document.getElementById('cep').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 5) {
+                value = value.slice(0, 5) + '-' + value.slice(5, 8);
+            }
+            e.target.value = value;
+        });
+
+        // Buscar CEP
+        document.getElementById('cep').addEventListener('blur', function() {
+            const cep = this.value.replace(/\D/g, '');
+            if (cep.length === 8) {
+                fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.erro) {
+                            alert('CEP não encontrado');
+                        } else {
+                            const enderecoInfo = document.getElementById('endereco-info');
+                            const enderecoTexto = document.getElementById('endereco-texto');
+                            enderecoTexto.textContent = `${data.logradouro}, ${data.bairro} - ${data.localidade}/${data.uf}`;
+                            enderecoInfo.style.display = 'block';
+
+                            // Calcular frete baseado no CEP
+                            const primeiroDigito = parseInt(cep[0]);
+                            if (primeiroDigito <= 4) frete = 20;
+                            else if (primeiroDigito <= 7) frete = 30;
+                            else frete = 40;
+
+                            carregarCarrinho();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar CEP:', error);
+                    });
+            }
+        });
+
+        // Submit do formulário
+        document.getElementById('form-cartao').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (carrinho.length === 0) {
+                alert('O carrinho está vazio!');
+                return;
+            }
+
+            const modal = document.getElementById('modal-sucesso');
+            const mensagem = document.getElementById('mensagem-sucesso');
+            mensagem.textContent = `Total pago: R$ ${(totalProdutos + frete).toFixed(2)}`;
+            modal.style.display = 'block';
+
+            // Limpar carrinho
+            carrinho = [];
+        });
+
+        function voltarInicio() {
+            window.location.href = './homepage.html';
+        }
+
+        // Carregar carrinho ao iniciar
+        window.onload = () => {
+            carregarCarrinho();
+        };
+    </script>
+</body>
+
+</html>

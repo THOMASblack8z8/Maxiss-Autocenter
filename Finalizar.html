@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Carrinho - Maxiss AutoCenter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+window.CarrinhoGlobal = {
+    STORAGE_KEY: 'maxiss_carrinho_temp',
+   
+    salvar: function(carrinho) {
+        sessionStorage.setItem(this.STORAGE_KEY, JSON.stringify(carrinho));
+    },
+   
+    carregar: function() {
+        const data = sessionStorage.getItem(this.STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+    },
+   
+    adicionar: function(nome, preco) {
+        const carrinho = this.carregar();
+        carrinho.push({ nome, preco });
+        this.salvar(carrinho);
+        return carrinho;
+    },
+   
+    remover: function(index) {
+        const carrinho = this.carregar();
+        carrinho.splice(index, 1);
+        this.salvar(carrinho);
+        return carrinho;
+    },
+   
+    limpar: function() {
+        this.salvar([]);
+        return [];
+    }
+};
+</script>
+</head>
+ 
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container-header">
+            <div class="logo">
+                <h1><a href="./homepage.html">Maxiss AutoCenter</a></h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="./homepage.html">Início</a></li>
+                    <li><a href="./Produtos.html">Produtos</a></li>
+                    <li><a href="./Sobre.html">Sobre</a></li>
+                    <li><a href="./Contato.html">Contato</a></li>
+                    <li><a href="./login.html" class="btn-login">Login</a></li>
+                </ul>
+            </nav>
+            <div class="carrinho-icon">
+                🛒 <span class="carrinho-count">0</span>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+ 
+    <!-- Main Content -->
+    <main>
+        <div class="carrinho-wrapper">
+            <div class="carrinho-header">
+                <h1>🛒 Seu Carrinho</h1>
+                <p>Revise seus produtos antes de finalizar a compra</p>
+            </div>
+ 
+            <div class="carrinho-content">
+                <!-- Lista de Produtos -->
+                <div class="produtos-box">
+                    <div class="produtos-header">
+                        <h2>Produtos</h2>
+                        <button class="btn-limpar" onclick="limparCarrinho()">🗑️ Limpar Carrinho</button>
+                    </div>
+                   
+                    <ul id="lista-carrinho" class="lista-produtos empty">
+                        <li class="carrinho-vazio">
+                            <div class="vazio-icon">🛒</div>
+                            <p>Seu carrinho está vazio</p>
+                            <a href="./Produtos.html" class="btn-continuar">Continuar Comprando</a>
+                        </li>
+                    </ul>
+                </div>
+ 
+                <!-- Resumo do Pedido -->
+                <div class="resumo-box">
+                    <h2>Resumo do Pedido</h2>
+                   
+                    <div class="resumo-detalhes">
+                        <div class="resumo-linha">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="resumo-linha">
+                            <span>Frete:</span>
+                            <span id="frete" class="frete-gratis">Grátis</span>
+                        </div>
+                        <div class="resumo-linha desconto-linha">
+                            <span>Desconto (10%):</span>
+                            <span id="desconto">- R$ 0,00</span>
+                        </div>
+                        <div class="resumo-linha total-linha">
+                            <span>Total:</span>
+                            <span id="total-carrinho">R$ 0,00</span>
+                        </div>
+                    </div>
+ 
+                    <div class="cupom-box">
+                        <input type="text" id="cupom-input" placeholder="Código do cupom" />
+                        <button onclick="aplicarCupom()">Aplicar</button>
+                    </div>
+ 
+                    <div class="pagamento-section">
+                        <h3>Escolha a forma de pagamento:</h3>
+                        <div class="pagamento-buttons">
+                            <button class="btn-pagamento" onclick="irParaPagamento('cartao')">
+                                <span class="icon">💳</span>
+                                <span>Cartão de Crédito</span>
+                            </button>
+                            <button class="btn-pagamento" onclick="irParaPagamento('pix')">
+                                <span class="icon">📱</span>
+                                <span>PIX</span>
+                            </button>
+                            <button class="btn-pagamento" onclick="irParaPagamento('boleto')">
+                                <span class="icon">📄</span>
+                                <span>Boleto</span>
+                            </button>
+                        </div>
+                    </div>
+ 
+                    <div class="garantias">
+                        <div class="garantia-item">
+                            <span>✓</span> Compra 100% segura
+                        </div>
+                        <div class="garantia-item">
+                            <span>✓</span> Frete grátis acima de R$ 200
+                        </div>
+                        <div class="garantia-item">
+                            <span>✓</span> Devolução em até 30 dias
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+ 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Maxiss AutoCenter — Todos os direitos reservados.</p>
+    </footer>
+ 
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f5f5;
+        }
+ 
+        /* ========== HEADER ========== */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+ 
+        .container-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            gap: 20px;
+        }
+ 
+        .logo h1 a {
+            color: #FFD700;
+            font-size: 1.8rem;
+            text-decoration: none;
+        }
+ 
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+ 
+        .nav-menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+ 
+        .nav-menu ul li a:hover {
+            color: #FFD700;
+        }
+ 
+        .btn-login {
+            background-color: #FFD700;
+            color: #000 !important;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+ 
+        .btn-login:hover {
+            background-color: #e6c200;
+        }
+ 
+        .carrinho-icon {
+            position: relative;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+ 
+        .carrinho-icon:hover {
+            transform: scale(1.1);
+        }
+ 
+        .carrinho-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #FFD700;
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 50%;
+            min-width: 18px;
+            text-align: center;
+        }
+ 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+ 
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #FFD700;
+            display: block;
+            border-radius: 2px;
+        }
+ 
+        /* ========== MAIN CONTENT ========== */
+        main {
+            padding-top: 100px;
+            padding-bottom: 60px;
+            min-height: calc(100vh - 80px);
+        }
+ 
+        .carrinho-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+ 
+        .carrinho-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+ 
+        .carrinho-header h1 {
+            font-size: 2.5rem;
+            color: #111;
+            margin-bottom: 10px;
+        }
+ 
+        .carrinho-header p {
+            font-size: 1.05rem;
+            color: #666;
+        }
+ 
+        .carrinho-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            align-items: start;
+        }
+ 
+        /* ========== PRODUTOS BOX ========== */
+        .produtos-box {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+ 
+        .produtos-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+ 
+        .produtos-header h2 {
+            font-size: 1.5rem;
+            color: #111;
+        }
+ 
+        .btn-limpar {
+            background: #ff4444;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+ 
+        .btn-limpar:hover {
+            background: #cc0000;
+        }
+ 
+        .lista-produtos {
+            list-style: none;
+        }
+ 
+        .lista-produtos.empty .carrinho-vazio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+            text-align: center;
+        }
+ 
+        .vazio-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+ 
+        .carrinho-vazio p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+ 
+        .btn-continuar {
+            display: inline-block;
+            background: #FFD700;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+ 
+        .btn-continuar:hover {
+            background: #e6c200;
+            transform: translateY(-2px);
+        }
+ 
+        .produto-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            gap: 20px;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+ 
+        .produto-item:last-child {
+            border-bottom: none;
+        }
+ 
+        .produto-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 5px;
+        }
+ 
+        .produto-info h3 {
+            font-size: 1rem;
+            color: #111;
+            margin-bottom: 5px;
+        }
+ 
+        .produto-info .preco {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFD700;
+        }
+ 
+        .produto-acoes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+ 
+        .btn-remover {
+            background: transparent;
+            color: #ff4444;
+            border: 1px solid #ff4444;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+ 
+        .btn-remover:hover {
+            background: #ff4444;
+            color: #fff;
+        }
+ 
+        /* ========== RESUMO BOX ========== */
+        .resumo-box {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 100px;
+        }
+ 
+        .resumo-box h2 {
+            font-size: 1.5rem;
+            color: #111;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+ 
+        .resumo-detalhes {
+            margin-bottom: 20px;
+        }
+ 
+        .resumo-linha {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 0.95rem;
+        }
+ 
+        .resumo-linha.desconto-linha {
+            color: #4CAF50;
+        }
+ 
+        .resumo-linha.total-linha {
+            border-top: 2px solid #f0f0f0;
+            margin-top: 10px;
+            padding-top: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+ 
+        .resumo-linha.total-linha span:last-child {
+            color: #FFD700;
+        }
+ 
+        .frete-gratis {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+ 
+        .cupom-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+ 
+        .cupom-box input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+        }
+ 
+        .cupom-box button {
+            background: #111;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+ 
+        .cupom-box button:hover {
+            background: #000;
+        }
+ 
+        .pagamento-section h3 {
+            font-size: 1.1rem;
+            color: #111;
+            margin-bottom: 15px;
+        }
+ 
+        .pagamento-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+ 
+        .btn-pagamento {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f9f9f9;
+            border: 2px solid #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: 0.3s;
+            font-family: 'Poppins', sans-serif;
+        }
+ 
+        .btn-pagamento:hover {
+            background: #fff9e6;
+            border-color: #FFD700;
+            transform: translateX(5px);
+        }
+ 
+        .btn-pagamento .icon {
+            font-size: 1.5rem;
+        }
+ 
+        .garantias {
+            padding-top: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+ 
+        .garantia-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+ 
+        .garantia-item span {
+            color: #4CAF50;
+            font-weight: 700;
+        }
+ 
+        /* ========== FOOTER ========== */
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+ 
+        footer p {
+            font-size: 0.9rem;
+        }
+ 
+        /* ========== RESPONSIVO ========== */
+        @media (max-width: 992px) {
+            .carrinho-content {
+                grid-template-columns: 1fr;
+            }
+ 
+            .resumo-box {
+                position: relative;
+                top: 0;
+            }
+        }
+ 
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #000;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                flex-direction: column;
+            }
+ 
+            .nav-menu.active {
+                display: flex;
+            }
+ 
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+ 
+            .menu-toggle {
+                display: flex;
+            }
+ 
+            .carrinho-header h1 {
+                font-size: 2rem;
+            }
+ 
+            .produtos-box,
+            .resumo-box {
+                padding: 20px;
+            }
+ 
+            .produto-item {
+                grid-template-columns: 60px 1fr;
+                gap: 15px;
+            }
+ 
+            .produto-acoes {
+                grid-column: 1 / -1;
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+        }
+ 
+        @media (max-width: 480px) {
+            .logo h1 a {
+                font-size: 1.4rem;
+            }
+ 
+            .carrinho-header h1 {
+                font-size: 1.6rem;
+            }
+ 
+            .cupom-box {
+                flex-direction: column;
+            }
+ 
+            .cupom-box button {
+                width: 100%;
+            }
+        }
+    </style>
+ 
+    <!-- JavaScript -->
+    <script>
+        // Carrinho (armazenamento em memória - não usa localStorage)
+       let carrinho = CarrinhoGlobal.carregar();
+ 
+        // Toggle menu mobile
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.nav-menu');
+ 
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        }
+ 
+        // Carregar carrinho
+        function carregarCarrinho() {
+            const listaCarrinho = document.getElementById('lista-carrinho');
+            const subtotalEl = document.getElementById('subtotal');
+            const descontoEl = document.getElementById('desconto');
+            const totalEl = document.getElementById('total-carrinho');
+            const contadorEl = document.querySelector('.carrinho-count');
+ 
+            listaCarrinho.innerHTML = '';
+            let subtotal = 0;
+ 
+            if (carrinho.length === 0) {
+                listaCarrinho.classList.add('empty');
+                listaCarrinho.innerHTML = `
+                    <li class="carrinho-vazio">
+                        <div class="vazio-icon">🛒</div>
+                        <p>Seu carrinho está vazio</p>
+                        <a href="./Produtos.html" class="btn-continuar">Continuar Comprando</a>
+                    </li>
+                `;
+            } else {
+                listaCarrinho.classList.remove('empty');
+                carrinho.forEach((item, index) => {
+                    subtotal += item.preco;
+                    const li = document.createElement('li');
+                    li.className = 'produto-item';
+                    li.innerHTML = `
+                        <img src="./Oleo.PNG" alt="${item.nome}" class="produto-img" />
+                        <div class="produto-info">
+                            <h3>${item.nome}</h3>
+                            <p class="preco">R$ ${item.preco.toFixed(2)}</p>
+                        </div>
+                        <div class="produto-acoes">
+                            <button class="btn-remover" onclick="removerItem(${index})">🗑️ Remover</button>
+                        </div>
+                    `;
+                    listaCarrinho.appendChild(li);
+                });
+            }
+ 
+            // Calcular valores
+            const desconto = subtotal * 0.1;
+            const total = subtotal - desconto;
+ 
+            subtotalEl.textContent = `R$ ${subtotal.toFixed(2)}`;
+            descontoEl.textContent = `- R$ ${desconto.toFixed(2)}`;
+            totalEl.textContent = `R$ ${total.toFixed(2)}`;
+           
+            if (contadorEl) {
+                contadorEl.textContent = carrinho.length;
+            }
+        }
+ 
+        function removerItem(index) {
+    carrinho = CarrinhoGlobal.remover(index);
+    carregarCarrinho();
+}
+ 
+function limparCarrinho() {
+    if (carrinho.length > 0) {
+        if (confirm('Deseja realmente limpar o carrinho?')) {
+            carrinho = CarrinhoGlobal.limpar();
+            carregarCarrinho();}
+        }
+      function limparCarrinho() {
+    if (carrinho.length > 0) {
+        if (confirm('Deseja realmente limpar o carrinho?')) {
+            carrinho = CarrinhoGlobal.limpar();
+            carregarCarrinho();
+        }
+    }
+}
+}
+        // Aplicar cupom
+        function aplicarCupom() {
+            const cupomInput = document.getElementById('cupom-input');
+            const cupom = cupomInput.value.toUpperCase();
+ 
+            if (cupom === 'MAXISS10') {
+                alert('✓ Cupom aplicado com sucesso! 10% de desconto');
+                cupomInput.value = '';
+            } else if (cupom === '') {
+                alert('⚠️ Digite um código de cupom');
+            } else {
+                alert('❌ Cupom inválido');
+            }
+        }
+ 
+        // Ir para pagamento
+        function irParaPagamento(tipo) {
+            if (carrinho.length === 0) {
+                alert('⚠️ Seu carrinho está vazio! Adicione produtos antes de continuar.');
+                return;
+            }
+ 
+            const urls = {
+                'cartao': './cartao.html',
+                'pix': './Pix.html',
+                'boleto': './Boleto.html'
+            };
+ 
+            window.location.href = urls[tipo] || './Produtos.html';
+        }
+ 
+        // Adicionar produtos de exemplo (simulação)
+        function adicionarProdutosExemplo() {
+            carrinho = [
+                { nome: 'Óleo de Motor 5W30', preco: 59.90 },
+                { nome: 'Filtro de Óleo', preco: 35.00 },
+                { nome: 'Pneu Aro 15', preco: 420.00 }
+            ];
+            carregarCarrinho();
+        }
+ 
+        // Carrega o carrinho ao abrir a página
+        window.onload = () => {
+            carregarCarrinho();
+            // Descomente a linha abaixo para testar com produtos
+            // adicionarProdutosExemplo();
+        };
+    </script>
+</body>
+ 
+</html>

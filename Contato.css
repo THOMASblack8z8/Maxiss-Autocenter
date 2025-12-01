@@ -1,0 +1,137 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #111;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFD700;
+}
+.nav-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.nav-menu ul li a:hover {
+    color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.1); /* leve fundo dourado no hover */
+}
+nav a {
+    background: none;         /* Remove o fundo */
+    color: #ffffff;
+    padding: 0 10px;          /* Apenas espaçamento lateral */
+    border-radius: 0;         /* Remove borda arredondada */
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: bold;
+    font-size: 1rem;
+}
+nav a:hover {
+    color: #b8860b;           /* Dourado escuro ao passar o mouse */
+    background: none; 
+}
+
+
+nav a.active, nav a:hover {
+}
+
+/* Remove estilo diferenciado do botão */
+.btn-login {
+    background: none;
+    color: #fff;
+    font-weight: 500;
+    padding: 8px 12px;
+}
+
+.btn-login:hover {
+    color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.1);
+}
+
+
+/* Conteúdo principal */
+.main-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-container h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.main-container p {
+    margin-bottom: 30px;
+}
+
+/* Formulário */
+.contato-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contato-form input,
+.contato-form textarea,
+.contato-form select {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.contato-form select {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Botão */
+.contato-form button {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFD700;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contato-form button:hover {
+    background-color: #FFC107;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    margin-top: 50px;
+}
+

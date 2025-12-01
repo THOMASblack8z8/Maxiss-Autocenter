@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Contato - Maxiss AutoCenter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.5/sweetalert2.min.css">
+</head>
+ 
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container-header">
+            <div class="logo">
+                <h1>Maxiss AutoCenter</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="./homepage.html">Início</a></li>
+                    <li><a href="./Produtos.html">Produtos</a></li>
+                    <li><a href="./Sobre.html">Sobre</a></li>
+                    <li><a href="./Contato.html" class="active">Contato</a></li>
+                    <li><a href="./login.html" class="btn-login">Login</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+ 
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="contato-wrapper">
+            <div class="contato-header">
+                <h1>Fale Conosco</h1>
+                <p>Envie suas reclamações, elogios ou sugestões para nos ajudar a melhorar nossos serviços.</p>
+            </div>
+ 
+            <div class="contato-content">
+                <!-- Informações de Contato -->
+                <div class="info-box">
+                    <h2>Informações de Contato</h2>
+                    <div class="info-item">
+                        <div class="icon"></div>
+                        <div>
+                            <h3>Endereço</h3>
+                            <p>Rua Exemplo, 123 - Centro<br>São Paulo, SP - CEP 01234-567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">📞</div>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p>(11) 1234-5678<br>(11) 98765-4321</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">✉️</div>
+                        <div>
+                            <h3>E-mail</h3>
+                            <p>contato@maxissautocenter.com.br<br>vendas@maxissautocenter.com.br</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">⏰</div>
+                        <div>
+                            <h3>Horário de Atendimento</h3>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 13h</p>
+                        </div>
+                    </div>
+                </div>
+ 
+                <!-- Formulário de Contato -->
+                <div class="form-box">
+                    <form action="#" method="post" class="contato-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome">Nome completo *</label>
+                                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                            </div>
+                        </div>
+ 
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(11) 91234-5678">
+                            </div>
+                            <div class="form-group">
+                                <label for="tipo">Tipo de mensagem *</label>
+                                <select id="tipo" name="tipo" required>
+                                    <option value="" disabled selected>Selecione uma opção</option>
+                                    <option value="reclamacao">Reclamação</option>
+                                    <option value="elogio">Elogio</option>
+                                    <option value="sugestao">Sugestão</option>
+                                    <option value="duvida">Dúvida</option>
+                                    <option value="orcamento">Orçamento</option>
+                                </select>
+                            </div>
+                        </div>
+ 
+                        <div class="form-group">
+                            <label for="assunto">Assunto *</label>
+                            <input type="text" id="assunto" name="assunto" placeholder="Resumo do assunto" required>
+                        </div>
+ 
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem *</label>
+                            <textarea id="mensagem" name="mensagem" placeholder="Escreva sua mensagem aqui..." rows="6" required></textarea>
+                        </div>
+ 
+                        <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+ 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Maxiss AutoCenter — Todos os direitos reservados.</p>
+    </footer>
+ 
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+             font-family: 'Old school', sans-serif;;
+            background: #f5f5f5;
+        }
+ 
+        /* ========== HEADER ========== */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+ 
+        .container-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+ 
+        .logo h1 {
+            color: #FFD700;
+            font-size: 1.8rem;
+        }
+ 
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+ 
+        .nav-menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+ 
+        .nav-menu ul li a:hover,
+        .nav-menu ul li a.active {
+            color: #FFD700;
+        }
+ 
+        .btn-login {
+            background-color: #FFD700;
+            color: #000 !important;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+ 
+        .btn-login:hover {
+            background-color: #e6c200;
+        }
+ 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+ 
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #FFD700;
+            display: block;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+ 
+        /* ========== MAIN CONTENT ========== */
+        .main-container {
+            padding-top: 100px;
+            padding-bottom: 60px;
+            min-height: calc(100vh - 80px);
+        }
+ 
+        .contato-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+ 
+        .contato-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+ 
+        .contato-header h1 {
+            font-size: 3rem;
+            color: #111;
+            margin-bottom: 15px;
+        }
+ 
+        .contato-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+ 
+        .contato-content {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+ 
+        /* ========== INFO BOX ========== */
+        .info-box {
+            background: #fff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+ 
+        .info-box h2 {
+            font-size: 1.5rem;
+            color: #111;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #FFD700;
+        }
+ 
+        .info-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+ 
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+ 
+        .info-item .icon {
+            font-size: 1.8rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff9e6;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+ 
+        .info-item h3 {
+            font-size: 1rem;
+            color: #111;
+            margin-bottom: 5px;
+        }
+ 
+        .info-item p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+ 
+        /* ========== FORM BOX ========== */
+        .form-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+ 
+        .contato-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+ 
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+ 
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+ 
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #333;
+        }
+ 
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
+            background: #fafafa;
+        }
+ 
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+ 
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+ 
+        .btn-submit {
+            background: #FFD700;
+            color: #000;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            margin-top: 10px;
+        }
+ 
+        .btn-submit:hover {
+            background: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+        }
+ 
+        /* ========== FOOTER ========== */
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+ 
+        footer p {
+            font-size: 0.9rem;
+        }
+ 
+        /* ========== SWEETALERT CUSTOMIZAÇÃO ========== */
+        .swal2-popup {
+            font-family: 'Poppins', sans-serif;
+        }
+ 
+        .swal2-confirm {
+            background-color: #FFD700 !important;
+            color: #000 !important;
+            font-weight: 600 !important;
+        }
+ 
+        .swal2-confirm:hover {
+            background-color: #e6c200 !important;
+        }
+ 
+        /* ========== RESPONSIVO ========== */
+        @media (max-width: 992px) {
+            .contato-content {
+                grid-template-columns: 1fr;
+            }
+ 
+            .info-box {
+                order: 2;
+            }
+ 
+            .form-box {
+                order: 1;
+            }
+        }
+ 
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #000;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                flex-direction: column;
+            }
+ 
+            .nav-menu.active {
+                display: flex;
+            }
+ 
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+ 
+            .menu-toggle {
+                display: flex;
+            }
+ 
+            .contato-header h1 {
+                font-size: 2.2rem;
+            }
+ 
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+ 
+            .info-box,
+            .form-box {
+                padding: 25px;
+            }
+        }
+ 
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.4rem;
+            }
+ 
+            .contato-header h1 {
+                font-size: 1.8rem;
+            }
+ 
+            .contato-header p {
+                font-size: 1rem;
+            }
+ 
+            .info-item {
+                flex-direction: column;
+                text-align: center;
+            }
+ 
+            .info-item .icon {
+                margin: 0 auto;
+            }
+        }
+    </style>
+ 
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.5/sweetalert2.all.min.js"></script>
+ 
+    <!-- Scripts -->
+    <script>
+        // Menu mobile
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.nav-menu');
+ 
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+ 
+        // Validação e envio do formulário com SweetAlert2
+        const form = document.querySelector('.contato-form');
+       
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+ 
+            // Obter dados do formulário
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const tipo = document.getElementById('tipo').value;
+ 
+            // Mostrar loading
+            Swal.fire({
+                title: 'Enviando...',
+                html: 'Aguarde enquanto processamos sua mensagem',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+ 
+            // Simular envio (remova o setTimeout em produção)
+            setTimeout(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Mensagem Enviada!',
+                    html: `<strong>${nome}</strong>, sua mensagem foi enviada com sucesso!<br><br>Entraremos em contato através do e-mail <strong>${email}</strong> em breve.`,
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#FFD700',
+                    footer: '<small>Tempo de resposta: até 24 horas úteis</small>'
+                }).then(() => {
+                    form.reset();
+                });
+            }, 1500);
+        });
+ 
+        // Validação em tempo real dos campos
+        const inputs = document.querySelectorAll('input[required], select[required], textarea[required]');
+       
+        inputs.forEach(input => {
+            input.addEventListener('invalid', (e) => {
+                e.preventDefault();
+               
+                let mensagem = '';
+                if (input.validity.valueMissing) {
+                    mensagem = 'Este campo é obrigatório!';
+                } else if (input.validity.typeMismatch) {
+                    mensagem = 'Por favor, insira um formato válido!';
+                }
+ 
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Campo incompleto',
+                    text: mensagem,
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#FFD700'
+                });
+ 
+                input.focus();
+            });
+        });
+    </script>
+</body>
+ 
+</html>
+ 

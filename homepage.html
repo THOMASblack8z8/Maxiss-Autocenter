@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Maxiss AutoCenter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container-header">
+            <div class="logo">
+                <h1>Maxiss AutoCenter</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    
+                    <li><a href="./Produtos.html">Produtos</a></li>
+                    <li><a href="./Sobre.html">Sobre</a></li>
+                    <li><a href="./Contato.html">Contato</a></li>
+                    <li><a href="./login.html" class="btn-login">Login</a></li>
+
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="banner-maxiss">
+            <div class="banner-content">
+                <h1>Maxiss<br>Autocenter</h1>
+                <p>Encontre as Melhores Peças e Cuidados para Seu Veículo!</p>
+                <a href="./Produtos.html" class="banner-btn">Explorar Produtos</a>
+            </div>
+        </section>
+
+        <section class="produtos">
+            <h2>Destaques da Maxiss</h2>
+            <div class="produtos-container">
+                <div class="produto">
+                    <img src="oleo.png" alt="Óleo de Motor" />
+                    <h3>Óleo de Motor</h3>
+                    <p class="preco">R$ 49,90</p>
+                    <a href="./Produtos.html" class="btn">Comprar</a>
+                </div>
+                <div class="produto">
+                    <img src="pastilha.png" alt="Pastilha de Freio" />
+                    <h3>Pastilha de Freio</h3>
+                    <p class="preco">R$ 79,90</p>
+                    <a href="./Produtos.html" class="btn">Comprar</a>
+                </div>
+                <div class="produto">
+                    <img src="./Pneu.PNG" alt="Pneu" />
+                    <h3>Pneu</h3>
+                    <p class="preco">R$ 350,00</p>
+                    <a href="./Produtos.html" class="btn">Comprar</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="logo-slide">
+            <div class="logo-track">
+                <img src=".//CONTINENTAL_logo.jpg" alt="Continental">
+                <img src=".//xbri_logo.png" alt="XBRI">
+                <img src=".//firestonelogo.jpg" alt="Firestone">
+                <img src=".//Pirelli_logo.png" alt="Pirelli">
+                <img src=".//Goodyear-lg.png" alt="Goodyear">
+                <img src=".//Michelin-logo.png" alt="Michelin">
+                <img src=".//dunlop.png" alt="Dunlop">
+                <img src=".//hankooklogo.png" alt="Hankook">
+                <img src=".//BRIDGESTONELOGO.jpg" alt="Bridgestone">
+                <img src=".//KUMHOLOGO.png" alt="Kumho">
+
+                <img src=".//CONTINENTAL_logo.jpg" alt="Continental">
+                <img src=".//xbri_logo.png" alt="XBRI">
+                <img src=".//firestonelogo.jpg" alt="Firestone">
+                <img src=".//Pirelli_logo.png" alt="Pirelli">
+                <img src=".//Goodyear-lg.png" alt="Goodyear">
+                <img src=".//Michelin-logo.png" alt="Michelin">
+                <img src=".//dunlop.png" alt="Dunlop">
+                <img src=".//hankooklogo.png" alt="Hankook">
+                <img src=".//BRIDGESTONELOGO.jpg" alt="Bridgestone">
+                <img src=".//KUMHOLOGO.png" alt="Kumho">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Maxiss AutoCenter — Todos os direitos reservados!</p>
+        
+    </footer>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+             font-family: 'Old school', sans-serif;;
+            background: #fff;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 15px 30px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .container-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo h1 {
+            color: #ffd900e2;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-menu ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-menu ul li a:hover {
+            color: #ffd900b8;
+        }
+
+        .btn-login {
+            background-color: #FFD700;
+            color: #000 !important;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .btn-login:hover {
+            background-color: #e6c200;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #FFD700;
+            display: block;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+ 
+        .btn-primary {
+            display: inline-block;
+            background: #FFD700;
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+        }
+
+        
+        .produtos {
+            padding: 80px 20px;
+            background: #fff;
+        }
+
+        .produtos h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #111;
+        }
+
+        .produtos-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .produto {
+            background: #f9f9f9;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .produto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .produto img {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .produto h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .produto .preco {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        .produto .btn {
+            display: inline-block;
+            background: #000;
+            color: #FFD700;
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .produto .btn:hover {
+            background: #FFD700;
+            color: #000;
+        }
+
+        /* ========== LOGO SLIDE ========== */
+        .logo-slide {
+            overflow: hidden;
+            background: #f8f8f8;
+            padding: 40px 0;
+        }
+
+        .logo-track {
+            display: flex;
+            width: calc(200px * 20);
+            animation: scroll 30s linear infinite;
+        }
+
+        .logo-track img {
+            height: 60px;
+            margin: 0 30px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+            object-fit: contain;
+        }
+
+        .logo-track img:hover {
+            filter: grayscale(0%);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* ===== Banner Maxiss Premium (NOVO BANNER) ===== */
+        .banner-maxiss {
+            width: 100%;
+            height: 65vh;
+            /* A imagem de fundo deve ser acessível e de alta resolução */
+            background: url('https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 8%;
+            position: relative;
+            /* Ajuste para não ficar atrás do header fixo */
+            margin-top: 80px; 
+        }
+
+        /* Efeito escuro */
+        .banner-maxiss::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        .banner-content {
+            position: relative;
+            color: #FFD700;
+        }
+
+        .banner-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .banner-content p {
+            font-size: 1.3rem;
+            margin: 15px 0 25px;
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .banner-btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #FFD700;
+            color: #000;
+            font-weight: 700;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: .3s;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, .35);
+        }
+
+        .banner-btn:hover {
+            background: #e6c200;
+            transform: translateY(-3px);
+        }
+
+
+        /* ========== RESPONSIVO ========== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #000;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                flex-direction: column;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+           
+            .produtos h2 {
+                font-size: 2rem;
+            }
+
+            .produtos-container {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Mobile para o Novo Banner */
+            .banner-maxiss {
+                height: 55vh;
+                padding: 0 5%;
+            }
+
+            .banner-content h1 {
+                font-size: 2.7rem;
+            }
+
+            .banner-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.4rem;
+            }
+
+           
+        }
+    </style>
+
+    <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.nav-menu');
+
+        toggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

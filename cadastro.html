@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="login.css"> 
+</head>
+<body>
+        <video autoplay muted loop playsinline id="bg-video">
+        <source src="./0_Car_Engine_Engine_Compartment_3840x2160.mov" type="video/mp4">
+        Seu navegador não suporta vídeos em HTML5.
+    </video>
+    <div class="login-container">
+        <form action="homepage.html" method="get" class="login-form">
+            <h2>Cadastro</h2>
+            <input type="text" name="nome" placeholder="Nome completo" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="text" name="username" placeholder="Usuário" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <input type="password" name="confirm_password" placeholder="Confirme a senha" required>
+            <button type="submit">Cadastrar</button>
+            <p class="signup-link">
+                Já tem cadastro? <a href="login.html">Clique aqui</a>
+            </p>
+        </form>
+    </div>
+    <canvas id="background"></canvas>
+    <script src="login.js"></script> 
+</body>
+</html>
